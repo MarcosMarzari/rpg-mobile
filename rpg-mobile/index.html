@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <!-- Meta tag crucial para o jogo se adaptar perfeitamente a telas de celulares -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-select=no">
+    <title>Beast Hunter RPG - Open World</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- ================= TELA DE EXPLORAÇÃO (MUNDO ABERTO) ================= -->
+        <div id="tela-exploracao" class="tela ativo">
+            <!-- Barra Superior do Mundo -->
+            <div class="hud-exploracao">
+                <div class="stats-jogador">
+                    <span id="exp-nome">Herói Lvl.1</span>
+                    <span id="exp-gold">💰 0</span>
+                </div>
+                <button id="btn-abrir-loja" class="btn-hud">🛒 Loja</button>
+            </div>
+
+            <!-- Canvas onde o jogo é desenhado em tempo real -->
+            <div class="canvas-container">
+                <canvas id="gameCanvas" width="380" height="380"></canvas>
+            </div>
+
+            <!-- Controles Virtuais para Celular (D-Pad) -->
+            <div class="controles-mobile">
+                <div class="dpad">
+                    <button class="btn-dpad" id="dpad-up">▲</button>
+                    <div class="dpad-meio">
+                        <button class="btn-dpad" id="dpad-left">◀</button>
+                        <div class="dpad-centro"></div>
+                        <button class="btn-dpad" id="dpad-right">▶</button>
+                    </div>
+                    <button class="btn-dpad" id="dpad-down">▼</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TELA DE LOJA ================= -->
+        <div id="tela-loja" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>🛒 Loja do Vilarejo</h2>
+                    <span id="loja-gold">Moedas: 0</span>
+                </div>
+                <div class="lista-itens-loja" id="itens-loja">
+                    <!-- Itens gerados dinamicamente por JS -->
+                </div>
+                <button id="btn-fechar-loja" class="btn-principal">Voltar para a Exploração</button>
+            </div>
+        </div>
+
+        <!-- ================= TELA DE COMBATE (TURNO) ================= -->
+        <div id="tela-batalha" class="tela">
+            <div class="cabecalho-batalha">
+                <span class="fase-atual" id="batalha-raridade">Fera Comum</span>
+                <span class="score-fases" id="batalha-nivel">Nível 1</span>
+            </div>
+
+            <div class="arena">
+                <div class="card-combatente fera-card" id="card-fera">
+                    <div class="avatar" id="fera-avatar">🐺</div>
+                    <div class="info">
+                        <span class="nome" id="fera-nome">Lupino Comum</span>
+                        <span class="raridade-tag" id="fera-raridade-label">Raridade: Comum</span>
+                    </div>
+                    <div class="barra-vida-container">
+                        <div class="barra-vida" id="fera-vida-barra" style="width: 100%;"></div>
+                        <span class="texto-vida" id="fera-vida-texto">100/100 HP</span>
+                    </div>
+                </div>
+
+                <div class="vs-divisor">VS</div>
+
+                <div class="card-combatente heroi-card" id="card-heroi">
+                    <div class="avatar" id="heroi-avatar">🧙‍♂️</div>
+                    <div class="info">
+                        <span class="nome" id="heroi-nome">Jogador</span>
+                        <span class="classe-label" id="heroi-atributos">Classe</span>
+                    </div>
+                    <div class="barra-vida-container">
+                        <div class="barra-vida" id="heroi-vida-barra" style="width: 100%;"></div>
+                        <span class="texto-vida" id="heroi-vida-texto">100/100 HP</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="log-combate" id="log-combate"></div>
+
+            <div class="acoes-batalha">
+                <button class="btn-acao" id="btn-atacar">⚔️ <span class="label">Atacar</span></button>
+                <button class="btn-acao" id="btn-curar">❤️ <span class="label">Curar</span></button>
+                <button class="btn-acao" id="btn-fugir">🏃 <span class="label">Fugir</span></button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
